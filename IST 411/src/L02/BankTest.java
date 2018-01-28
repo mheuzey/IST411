@@ -1,12 +1,12 @@
 package L02;
 
 /**
- * This program shows data corruption when multiple threads access a data structure.
- * @version 1.31 2015-06-21
+ * This program shows deadlock.
  * @author Cay Horstmann
+ * @author IST 411 Team 2
  */
 public class BankTest {
-    public static final int NACCOUNTS = 100;
+    public static final int NACCOUNTS = 10;
     public static final double INITIAL_BALANCE = 1000;
     public static final double MAX_AMOUNT = 1000;
     public static final int DELAY = 10;
@@ -19,11 +19,12 @@ public class BankTest {
                 try {
                     while (true) {
                         int toAccount = (int) (bank.size() * Math.random());
-                        double amount = MAX_AMOUNT * Math.random();
+                        double amount = 2* MAX_AMOUNT * Math.random();
                         bank.transfer(fromAccount, toAccount, amount);
                         Thread.sleep((int) (DELAY * Math.random()));
                     }
                 } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
                 }
             };
             Thread t = new Thread(r);
