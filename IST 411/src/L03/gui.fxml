@@ -8,24 +8,27 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="L03.GuiController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="502.0" prefWidth="634.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="L03.GuiController">
    <children>
-      <Label layoutX="119.0" layoutY="123.0" text="Ticker:" />
-      <ComboBox fx:id="cmbTicker" layoutX="61.0" layoutY="147.0" prefWidth="150.0" />
-      <Label layoutX="153.0" layoutY="41.0" prefHeight="42.0" prefWidth="307.0" text="Get Ticker Data!">
+      <Label layoutX="14.0" layoutY="56.0" text="Ticker:" />
+      <ComboBox fx:id="cmbTickers" layoutX="14.0" layoutY="73.0" onAction="#handleTickerChange" prefHeight="25.0" prefWidth="78.0" />
+      <Label layoutX="14.0" layoutY="14.0" prefHeight="42.0" prefWidth="182.0" text="Get Ticker Data!">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="255.0" layoutY="123.0" text="Time Frame:" />
-      <ComboBox fx:id="cmbTime" layoutX="225.0" layoutY="147.0" prefWidth="150.0" />
-      <TableView layoutX="155.0" layoutY="186.0" prefHeight="200.0" prefWidth="200.0">
+      <Label layoutX="14.0" layoutY="104.0" text="Interval:" />
+      <ComboBox fx:id="cmbIntervals" layoutX="14.0" layoutY="121.0" onAction="#handleIntervalChange" prefHeight="25.0" prefWidth="78.0" />
+      <TableView layoutX="117.0" layoutY="56.0" prefHeight="431.0" prefWidth="454.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn prefWidth="75.0" text="Time" />
+          <TableColumn prefWidth="75.0" text="Open" />
+            <TableColumn prefWidth="75.0" text="Low" />
+            <TableColumn prefWidth="75.0" text="High" />
+            <TableColumn prefWidth="75.0" text="Close" />
+            <TableColumn prefWidth="75.0" text="Volume" />
         </columns>
       </TableView>
-      <Button fx:id="btnGetData" layoutX="424.0" layoutY="147.0" mnemonicParsing="false" onAction="#handleGetData" text="Get Data!" />
+      <Button fx:id="btnGetData" layoutX="15.0" layoutY="463.0" mnemonicParsing="false" onAction="#handleGetData" text="Get Data!" />
    </children>
 </Pane>

@@ -22,18 +22,30 @@ import javax.net.ssl.HttpsURLConnection;
  */
 public class GuiController implements Initializable {
     @FXML
-    private ComboBox cmbTicker;
+    private ComboBox cmbTickers;
     @FXML
-    private ComboBox cmbTime;
+    private ComboBox cmbIntervals;
     @FXML
     private Button btnGetData;
+    
+    private final String[] TICKERS = {"AAPL", "GOOGL", "MSFT"};
+    private String ticker;
+    private final String[] INTERVALS = {"1min", "5min", "15min", "30min", "60min"};
+    private String interval;
+    private final String address = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY";
     
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        cmbTickers.getItems().removeAll(cmbTickers.getItems());
+        cmbTickers.getItems().addAll(TICKERS);
+        cmbTickers.getSelectionModel().select(ticker = TICKERS[0]);
         
+        cmbIntervals.getItems().removeAll(cmbIntervals.getItems());
+        cmbIntervals.getItems().addAll(INTERVALS);
+        cmbIntervals.getSelectionModel().select(interval = INTERVALS[0]);
     }    
     
     @FXML
@@ -41,10 +53,20 @@ public class GuiController implements Initializable {
         connect();
     }
     
+    @FXML
+    private void handleTickerChange(ActionEvent event) {
+        ticker = (String) cmbTickers.getSelectionModel().getSelectedItem();
+    }
+    
+    @FXML
+    private void handleIntervalChange(ActionEvent event) {
+        interval = (String) cmbIntervals.getSelectionModel().getSelectedItem();
+    }
+    
     private void connect() {
         System.out.println("Connecting to site.......");
         try {
-            URL url = new URL("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=AAPL&interval=1min&apikey=EK35BIPXHQP01Z6W");
+            URL url = new URL(address + "&symbol=" + ticker + "&interval=" + interval + "&apikey=EK35BIPXHQP01Z6W");
             HttpsURLConnection is= (HttpsURLConnection) url.openConnection();
             BufferedReader rd = new BufferedReader(new InputStreamReader(is.getInputStream()));
             String s;
