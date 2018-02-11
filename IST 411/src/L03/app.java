@@ -21,10 +21,10 @@ public class app extends Application{
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/L03/gui.fxml"));
         this.scene = new Scene(root);
-        stage.setTitle("Connectin to a web service");
+        stage.setTitle("Connecting to a web service");
         stage.setScene(scene);
-        stage.setWidth(650);
-        stage.setHeight(600);
+        //stage.setWidth(650);
+        //stage.setHeight(600);
         stage.show();
     }
 }
