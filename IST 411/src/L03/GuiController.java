@@ -81,8 +81,8 @@ public class GuiController implements Initializable {
     private void connect() {
         System.out.println("Connecting to site.......");
         try {
-            URL url = new URL(address + "&symbol=" + ticker + "&interval=" + interval + "&apikey=EK35BIPXHQP01Z6W");
-            HttpsURLConnection is= (HttpsURLConnection) url.openConnection();
+            URL url = new URL(address + "&symbol=" + ticker + "&interval=" + interval + "&apikey=42LP66DV8I8H4X64");
+            HttpsURLConnection is = (HttpsURLConnection) url.openConnection();
             BufferedReader rd = new BufferedReader(new InputStreamReader(is.getInputStream()));
             
             String s;
