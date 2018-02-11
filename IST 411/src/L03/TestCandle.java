@@ -66,12 +66,12 @@ public class TestCandle extends JFrame {
         List<OHLCDataItem> dataItems = new ArrayList<OHLCDataItem>();
         try {
             //URL url = new URL(address + "&symbol=" + ticker + "&interval=" + interval + "&apikey=EK35BIPXHQP01Z6W" + "&datatype=csv");
-            String strUrl= "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=MSFT&apikey=demo&datatype=csv";
+            String strUrl= "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=MSFT&interval=15min&apikey=EK35BIPXHQP01Z6W&datatype=csv";
             URL url = new URL(strUrl);
             HttpsURLConnection is= (HttpsURLConnection) url.openConnection();
             BufferedReader rd = new BufferedReader(new InputStreamReader(is.getInputStream()));
             
-            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+            DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
             String inputLine;
             rd.readLine();
