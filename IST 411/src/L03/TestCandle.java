@@ -5,7 +5,6 @@ import org.jfree.chart.axis.*;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.CandlestickRenderer;
 import org.jfree.data.xy.*;
-import org.jfree.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,7 +23,7 @@ public class TestCandle extends JFrame {
     private JPanel panel;
     private XYPlot mainPlot;
     private JFreeChart chart;
-    private JLabel lblHighest, lblLowest, lblAdvice;
+    private JLabel lblAdvice;
     private final String address = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY";
     private final String[] stock_list = {"AAPL", "AMZN", "DIS", "F", "GE", "GOOGL", "INTC", "MSFT", "NFLX", "NVDA", "TSLA"};
     private final String[] itv_list = {"1min", "5min", "15min", "30min", "60min"};
